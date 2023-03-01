@@ -62,14 +62,34 @@ void dealloc(Node* head)
     }
 }
 
+void llpivot(Node *&head, Node *&smaller, Node *&larger, int pivot)
+{
+	
+	if (head == NULL)
+    {
+        smaller = NULL;
+        larger = NULL;
+    }
+    llpivot(head->next, smaller, larger, pivot);
+	if ((head -> val) > pivot)
+    {
+       head -> next = larger;
+       larger = head;
+    }
+    else 
+    {
+        head -> next = smaller;
+        smaller = head;
+    }
+    head = NULL;
+}
+
+
+
 // -----------------------------------------------
 //   Add any helper functions or
 //   function object struct declarations
 // -----------------------------------------------
-
-
-
-
 
 int main(int argc, char* argv[])
 {
@@ -87,9 +107,21 @@ int main(int argc, char* argv[])
 
     // Test out your linked list code
 
+    // Node* small = NULL;
+    // Node* large = NULL;
 
+    // llpivot(head, small, large, 9);
 
+    // cout << "llpivot head: ";
+    // print(head);
+    // cout << "\n llpivot small: ";
+    // print(small);
+    // cout << "\n llpivot large: ";
+    // print(large);
+    // dealloc(small);
+    // dealloc(large);
     
-    return 0;
+    
 
+    return 0;
 }
