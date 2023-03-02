@@ -174,11 +174,15 @@ void Heap<T,PComparator>::pop()
 	std::size_t index = 0;
 	while(true) {
 		std::size_t first_index = index * m + 1;
-		// if(first_index + 1 == myheap.size())
-		// {
-		// 	std::cout << "uh" << std::endl;
-		// }
-		std::size_t other_index = first_index++;
+		if (first_index > myheap.size()-1)
+		{
+			break;
+		}
+		std::size_t other_index = first_index;
+		if(first_index + 1 < myheap.size())
+		{
+		 	other_index++;
+		}
 		T& current_item = myheap[index];
 		std::size_t best_index = first_index;
 		for (int i = 0; i < m-2; i++) //T ??
